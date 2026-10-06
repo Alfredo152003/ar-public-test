@@ -1,0 +1,1690 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ═══════════════════════════════════════════════════════════════
+   ARIAS RANK & ASOCIADOS
+   Registro: institucional, sobrio, minimalista.
+   Marca inmutable: Montserrat · Navy #2e3f66 · Gold #ddc04c
+
+   Principios:
+   · La jerarquía la construye la tipografía y el espacio, no el color.
+   · El dorado es un filete de acento, nunca un relleno ni un brillo.
+   · Bordes de 1px antes que sombras. Sombras: mínimas y funcionales.
+   · Movimiento: solo fundido con desplazamiento corto. Sin rebotes,
+     sin escalas, sin rotaciones, sin barridos.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+    /* ── Navy (derivada de #2e3f66 / #222e4b) ── */
+    --navy-50:  #f2f4f8;
+    --navy-100: #e4e8f0;
+    --navy-200: #c8d0e0;
+    --navy-300: #a3aec6;
+    --navy-400: #7383a5;
+    --navy-500: #4f6289;
+    --navy-600: #2e3f66;  /* PRIMARY — marca */
+    --navy-700: #283757;
+    --navy-800: #222e4b;  /* NAVY — marca */
+    --navy-900: #1a2338;
+    --navy-950: #121826;
+
+    /* ── Gold (derivada de #ddc04c) — uso restringido a filetes ── */
+    --gold-200: #f0e3ad;
+    --gold-300: #e7d47f;
+    --gold-400: #ddc04c;  /* TERTIARY — marca */
+    --gold-500: #c3a838;
+    --gold-600: #a08a2c;
+
+    /* ── Neutrales ── */
+    --gray-50:  #fafbfc;
+    --gray-100: #f4f6f8;
+    --gray-200: #e8ebef;
+    --gray-300: #d6dae1;
+    --gray-400: #a8aeba;
+    --gray-500: #737a88;
+    --gray-600: #565d6b;
+    --gray-700: #3f4653;
+    --gray-800: #2a303b;
+    --gray-900: #191d26;
+
+    /* ── Aliases de marca ── */
+    --primary:   var(--navy-600);
+    --secondary: #949599;
+    --tertiary:  var(--gold-400);
+    --navy:      var(--navy-800);
+    --constrast: #f4efeb;
+
+    /* ── Superficies ── */
+    --bg:          #ffffff;
+    --bg-alt:      var(--gray-50);
+    --bg-soft:     var(--gray-100);
+    --card:        #ffffff;
+    --card-raised: #ffffff;
+    --card-border: var(--gray-200);
+    --card-hover-border: var(--navy-300);
+    --rule:        var(--gray-200);
+
+    /* ── Texto ── */
+    --ink:        var(--gray-900);
+    --ink-soft:   var(--gray-600);
+    --muted:      var(--gray-500);
+    --primary-ink: #ffffff;
+
+    /* ── Acentos ── */
+    --pill-ink:    var(--navy-600);
+    --accent-ink:  var(--navy-600);
+    --accent-line: var(--gold-400);
+    --chip-bg:     transparent;
+    --chip-border: var(--gray-300);
+    --caption-bg:    rgba(255, 255, 255, .94);
+    --caption-color: var(--gray-800);
+    --footer-bg:  var(--gray-50);
+    --footer-ink: var(--gray-600);
+
+    /* ── Sombras: discretas, solo donde hay elevación real ── */
+    --shadow-xs: 0 1px 2px rgba(25, 29, 38, .04);
+    --shadow-sm: 0 1px 3px rgba(25, 29, 38, .06);
+    --shadow:    0 2px 8px rgba(25, 29, 38, .07);
+    --shadow-md: 0 4px 14px rgba(25, 29, 38, .08);
+    --shadow-lg: 0 8px 24px rgba(25, 29, 38, .10);
+    --shadow-xl: 0 14px 36px rgba(25, 29, 38, .12);
+    --overlay-shadow: var(--shadow-lg);
+
+    /* ── Navbar / secciones: superficies planas ── */
+    --navbar-bg: var(--navy-800);
+    --navbar-shadow: none;
+    --gradient-section: none;
+    --gradient-gold: linear-gradient(90deg, var(--gold-400), var(--gold-500));
+
+    /* ── Foco ── */
+    --ring: rgba(46, 63, 102, .45);
+
+    /* ── Geometría: radios contenidos = registro formal ── */
+    --radius-sm: 3px;
+    --radius:    5px;
+    --radius-lg: 6px;
+    --radius-pill: 3px;
+    --container: 1180px;
+    --space: clamp(20px, 4vw, 40px);
+
+    /* ── Movimiento: curvas neutras, sin sobreimpulso ── */
+    --ease:   cubic-bezier(.4, 0, .2, 1);
+    --t-fast: .15s;
+    --t:      .25s;
+    --t-slow: .4s;
+
+    color-scheme: light;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TEMA OSCURO — solo por elección explícita del usuario.
+   El sitio arranca SIEMPRE en claro.
+   ═══════════════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+    --bg:          var(--navy-950);
+    --bg-alt:      #171d2c;
+    --bg-soft:     #1c2333;
+    --card:        #171d2c;
+    --card-raised: #1c2333;
+    --card-border: #2b3345;
+    --card-hover-border: var(--navy-500);
+    --rule:        #2b3345;
+
+    --ink:      #e6e8ed;
+    --ink-soft: #aeb5c2;
+    --muted:    #848b99;
+
+    --secondary: #7c8091;
+
+    --pill-ink:   var(--gold-300);
+    --accent-ink: var(--gold-300);
+    --chip-border: #2b3345;
+    --caption-bg:    rgba(18, 24, 38, .94);
+    --caption-color: #e6e8ed;
+    --footer-bg:  #141a27;
+    --footer-ink: #aeb5c2;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, .28);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .34);
+    --shadow:    0 2px 8px rgba(0, 0, 0, .40);
+    --shadow-md: 0 4px 14px rgba(0, 0, 0, .46);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, .52);
+    --shadow-xl: 0 14px 36px rgba(0, 0, 0, .58);
+
+    --navbar-bg: #0f1420;
+    --ring: rgba(221, 192, 76, .5);
+
+    color-scheme: dark;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color var(--t-slow) var(--ease), color var(--t-slow) var(--ease);
+}
+
+img { max-width: 100%; height: auto; }
+
+::selection {
+    background: var(--navy-100);
+    color: var(--navy-900);
+}
+
+[data-theme="dark"] ::selection {
+    background: var(--navy-700);
+    color: #fff;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    left: 50%;
+    top: -100px;
+    transform: translateX(-50%);
+    z-index: 2000;
+    background: var(--navy-800);
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font: 600 14px/1 "Montserrat", sans-serif;
+    text-decoration: none;
+    transition: top var(--t) var(--ease);
+}
+
+.skip-link:focus { top: 0; color: #fff; }
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVBAR — superficie plana, filete inferior discreto
+   ═══════════════════════════════════════════════════════════════ */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background: var(--navbar-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, .09);
+    transition: background-color var(--t) var(--ease);
+}
+
+.navbar-brand {
+    transition: opacity var(--t) var(--ease);
+}
+
+.navbar-brand:hover { opacity: .82; }
+
+.navbar-brand p {
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.nav-link {
+    position: relative;
+    margin: 0 2px;
+    padding: 10px 16px !important;
+    font-size: 14.5px;
+    font-weight: 500;
+    letter-spacing: .01em;
+    color: rgba(255, 255, 255, .74) !important;
+    border-radius: 0;
+    transition: color var(--t) var(--ease);
+}
+
+.nav-link:hover { color: #fff !important; }
+
+/* Subrayado dorado: 1px, sin desplazamientos ni sombras */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 4px;
+    height: 1px;
+    background: var(--gold-400);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform var(--t) var(--ease);
+}
+
+.nav-link:hover::after { transform: scaleX(1); }
+
+.nav-link.active {
+    color: #fff !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after { transform: scaleX(1); }
+
+.navbar-toggler {
+    border: none;
+    padding: 4px 8px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, .28);
+}
+
+/* ── Theme toggle: discreto ── */
+.theme-toggle {
+    appearance: none;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: var(--radius-sm);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, .74);
+    margin-left: 14px;
+    flex-shrink: 0;
+    transition: color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+.theme-toggle:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, .45);
+}
+
+.theme-toggle svg { width: 17px; height: 17px; }
+
+.theme-toggle .icon-moon { display: none; }
+.theme-toggle .icon-sun  { display: block; }
+
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun  { display: none; }
+
+@media (max-width: 991px) {
+    .theme-toggle { margin: 12px 0 6px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO — velo navy sólido, sin texturas ni viñetas
+   ═══════════════════════════════════════════════════════════════ */
+.hero-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: calc(100vh - 92px);
+    min-height: 480px;
+    background-image:
+        linear-gradient(rgba(26, 35, 56, .84), rgba(26, 35, 56, .84)),
+        url("/images/hero-img-2.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: var(--space);
+    line-height: 1.3;
+}
+
+.hero-header h1 {
+    font-size: clamp(2rem, 4.6vw, 3.1rem);
+    font-weight: 600;
+    letter-spacing: .005em;
+    margin: 0;
+    opacity: 0;
+    animation: arFadeUp .7s var(--ease) forwards;
+}
+
+/* Filete dorado entre título y bajada: se dibuja de dentro hacia fuera */
+.hero-header h1::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 2px;
+    margin: 26px auto 22px;
+    background: var(--gold-400);
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: arRuleIn .55s var(--ease) .3s forwards;
+}
+
+/* Lema: pasa de antetítulo a segunda voz del hero.
+   El tracking amplio es la firma tipográfica de la marca, así que la
+   entrada lo asienta en lugar de desplazar el bloque. */
+.hero-tagline {
+    --track: .34em;
+    display: block;
+    color: rgba(255, 255, 255, .88);
+    font-size: clamp(1rem, 2.6vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: var(--track);
+    text-transform: uppercase;
+    /* El tracking deja un hueco tras la última letra: al centrar, el texto
+       se ve corrido a la izquierda medio espacio. Se compensa. */
+    text-indent: calc(var(--track) / 2);
+    opacity: 0;
+    animation: arTaglineIn .8s var(--ease) .45s forwards;
+}
+
+/* Sólo fundido: un `transform` con fill-mode forwards congelaría el
+   translateY del hover del botón. */
+.hero-header .btnIndexInfo {
+    opacity: 0;
+    animation: arFadeIn .6s var(--ease) .8s forwards;
+}
+
+/* Botón hero: relleno sólido en hover, sin brillos */
+.btnIndexInfo {
+    display: inline-block;
+    padding: 15px 34px;
+    border: 1px solid rgba(255, 255, 255, .55);
+    border-radius: var(--radius-sm);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: background-color var(--t) var(--ease), color var(--t) var(--ease),
+                border-color var(--t) var(--ease);
+}
+
+.btnIndexInfo {
+    transition: background-color var(--t) var(--ease), color var(--t) var(--ease),
+                border-color var(--t) var(--ease), transform var(--t-fast) var(--ease);
+}
+
+.btnIndexInfo:hover {
+    background: #fff;
+    color: var(--navy-800);
+    border-color: #fff;
+    transform: translateY(-1px);
+}
+
+.btnIndexInfo:active { transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMACIONES — únicamente fundido con desplazamiento corto.
+   Los nombres se conservan para no romper el marcado existente,
+   pero todos resuelven a un movimiento sobrio.
+   ═══════════════════════════════════════════════════════════════ */
+.anim-hidden { opacity: 0; }
+
+.anim-fade-in    { animation: arFadeIn .6s var(--ease) forwards; }
+.anim-fade-up    { animation: arFadeUp .6s var(--ease) forwards; }
+.anim-fade-down  { animation: arFadeDown .6s var(--ease) forwards; }
+.anim-slide-left { animation: arFadeLeft .6s var(--ease) forwards; }
+.anim-slide-right{ animation: arFadeRight .6s var(--ease) forwards; }
+.anim-scale-in   { animation: arFadeUp .6s var(--ease) forwards; }
+.anim-blur-in    { animation: arFadeUp .6s var(--ease) forwards; }
+
+@keyframes arFadeIn    { from { opacity: 0; } to { opacity: 1; } }
+@keyframes arFadeUp    { from { opacity: 0; transform: translateY(10px); }  to { opacity: 1; transform: none; } }
+@keyframes arFadeDown  { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+@keyframes arFadeLeft  { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+@keyframes arFadeRight { from { opacity: 0; transform: translateX(14px); }  to { opacity: 1; transform: none; } }
+
+/* Entrada del hero */
+@keyframes arRuleIn    { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes arTaglineIn {
+    from { opacity: 0; letter-spacing: calc(var(--track) + .18em); }
+    to   { opacity: 1; letter-spacing: var(--track); }
+}
+
+/* Escalonado breve */
+.anim-stagger > * { opacity: 0; }
+
+.anim-stagger.anim-active > * { animation: arFadeUp .55s var(--ease) forwards; }
+
+.anim-stagger.anim-active > *:nth-child(1) { animation-delay: 0s; }
+.anim-stagger.anim-active > *:nth-child(2) { animation-delay: .05s; }
+.anim-stagger.anim-active > *:nth-child(3) { animation-delay: .10s; }
+.anim-stagger.anim-active > *:nth-child(4) { animation-delay: .15s; }
+.anim-stagger.anim-active > *:nth-child(5) { animation-delay: .20s; }
+.anim-stagger.anim-active > *:nth-child(6) { animation-delay: .25s; }
+.anim-stagger.anim-active > *:nth-child(7) { animation-delay: .30s; }
+.anim-stagger.anim-active > *:nth-child(8) { animation-delay: .35s; }
+
+/* Legacy */
+.animate-section { opacity: 0; }
+.animate-fading  { animation: arFadeIn .5s var(--ease) forwards; }
+.animate-top     { animation: arFadeDown .6s var(--ease) forwards; }
+
+/* ═══════════════════════════════════════════════════════════════
+   TIPOGRAFÍA
+   ═══════════════════════════════════════════════════════════════ */
+.grid { display: grid; gap: clamp(28px, 4vw, 56px); }
+
+/* Antetítulo editorial: versalitas con filete dorado */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    color: var(--pill-ink);
+    font: 600 11px/1.2 "Montserrat", sans-serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.pill::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--gold-400);
+}
+
+.h1 {
+    font: 600 clamp(1.75rem, 3.4vw, 2.55rem)/1.22 "Montserrat", sans-serif;
+    letter-spacing: -.005em;
+    margin: 1.1rem 0 .5rem;
+    color: var(--ink);
+}
+
+.h2 {
+    font: 600 clamp(1.6rem, 3vw, 2.25rem)/1.25 "Montserrat", sans-serif;
+    letter-spacing: -.005em;
+    margin: .9rem 0 .4rem;
+    color: var(--ink);
+}
+
+/* Filete dorado bajo títulos de sección */
+.intro .h2 {
+    position: relative;
+    padding-bottom: 22px;
+}
+
+.intro .h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 2px;
+    background: var(--gold-400);
+}
+
+.about-copy .h2 {
+    position: relative;
+    padding-bottom: 22px;
+}
+
+.about-copy .h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 44px;
+    height: 2px;
+    background: var(--gold-400);
+}
+
+.sub,
+.lead {
+    color: var(--ink-soft);
+    font-size: clamp(15.5px, 1.5vw, 16.5px);
+    line-height: 1.78;
+    max-width: 62ch;
+}
+
+/* Listado: marcador de filete, sin iconografía decorativa */
+.bullets {
+    margin: 22px 0 24px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.bullets li {
+    position: relative;
+    margin: .6rem 0;
+    padding-left: 22px;
+    color: var(--ink-soft);
+    font-size: 15px;
+}
+
+.bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: .72em;
+    width: 10px;
+    height: 1px;
+    background: var(--gold-500);
+}
+
+.trust {
+    margin-top: clamp(24px, 3vw, 34px);
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font: 400 12.5px/1.6 "Montserrat", sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BOTONES — planos, transición de color únicamente
+   ═══════════════════════════════════════════════════════════════ */
+.ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.custom-btn {
+    appearance: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 13px 26px;
+    font: 600 13px/1 "Montserrat", sans-serif;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color var(--t) var(--ease), color var(--t) var(--ease),
+                border-color var(--t) var(--ease), transform var(--t-fast) var(--ease);
+}
+
+/* Elevación de 1px: se percibe como tacto, no como movimiento */
+.custom-btn:hover { transform: translateY(-1px); }
+.custom-btn:active { transform: translateY(0); }
+
+.custom-btn:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+}
+
+.custom-btn .chev {
+    width: 14px;
+    height: 14px;
+    transition: transform var(--t) var(--ease);
+}
+
+/* El chevron avanza: refuerza la dirección del enlace */
+.custom-btn:hover .chev { transform: translateX(3px); }
+
+.custom-btn-primary {
+    background: var(--navy-600);
+    color: #fff;
+}
+
+.custom-btn-primary:hover {
+    background: var(--navy-800);
+    color: #fff;
+}
+
+.custom-btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--gray-300);
+}
+
+.custom-btn-outline:hover {
+    background: transparent;
+    color: var(--navy-600);
+    border-color: var(--navy-600);
+}
+
+[data-theme="dark"] .custom-btn-outline:hover {
+    color: #fff;
+    border-color: var(--navy-400);
+}
+
+.custom-btn-outline-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--gray-300);
+}
+
+.custom-btn-outline-secondary:hover {
+    background: transparent;
+    color: var(--gold-600);
+    border-color: var(--gold-400);
+}
+
+[data-theme="dark"] .custom-btn-outline-secondary:hover { color: var(--gold-300); }
+
+/* ═══════════════════════════════════════════════════════════════
+   CHIPS — etiquetas sobrias
+   ═══════════════════════════════════════════════════════════════ */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 26px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 14px;
+    background: var(--chip-bg);
+    border: 1px solid var(--chip-border);
+    border-radius: var(--radius-sm);
+    font: 500 12.5px/1 "Montserrat", sans-serif;
+    color: var(--ink-soft);
+    transition: border-color var(--t) var(--ease), color var(--t) var(--ease),
+                background-color var(--t) var(--ease);
+}
+
+.chip:hover {
+    border-color: var(--navy-400);
+    background: var(--bg-alt);
+    color: var(--ink);
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    color: var(--navy-500);
+    stroke-width: 1.5;
+}
+
+[data-theme="dark"] .icon { color: var(--navy-300); }
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font: 600 11px/1 "Montserrat", sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--navy-600);
+    background: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+[data-theme="dark"] .badge { color: var(--gold-300); }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO SERVICES (StartSection)
+   ═══════════════════════════════════════════════════════════════ */
+.hero-services {
+    background: var(--bg);
+    color: var(--ink);
+    padding: clamp(64px, 8vw, 120px) var(--space);
+}
+
+.hero-grid {
+    grid-template-columns: 1.06fr .94fr;
+    align-items: center;
+}
+
+/* ── Lámina de tres fotografías ────────────────────────────────────
+   Una lámina editorial, no tres tarjetas sueltas: encabeza una toma
+   ancha y debajo la acompañan dos. Los tres originales son 4:3
+   apaisados, así que ningún encuadre se lleva a vertical — recortar
+   a retrato partiría las figuras por la mitad. */
+.hero-collage {
+    display: grid;
+    /* Reparto desigual a propósito: el 50/50 lee como plantilla */
+    grid-template-columns: 1.15fr .85fr;
+    /* Juntura fina: las tres piezas deben leerse como una sola pieza */
+    gap: 6px;
+}
+
+.hero-media .collage-pieza {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--gray-200);
+}
+
+.collage-lead {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/10;
+}
+
+/* La segunda pieza fija la altura de la fila y la tercera la acompaña:
+   así el borde inferior queda a ras sin cuadrar alturas a mano. */
+.hero-media .collage-pieza:nth-child(2) { aspect-ratio: 4/3; }
+
+.hero-media .collage-pieza img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;          /* el radio lo recorta la pieza */
+    /* Mismo acercamiento largo y mínimo que el resto de las imágenes */
+    transition: transform .7s var(--ease);
+}
+
+.hero-media .collage-pieza:hover img { transform: scale(1.02); }
+
+@media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-media { order: -1; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ÁREAS DE PRÁCTICA
+   Índice numerado sobre retícula de filetes: el registro de un
+   sumario jurídico, no de una parrilla de tarjetas.
+   ═══════════════════════════════════════════════════════════════ */
+.practice {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: clamp(64px, 8vw, 120px) var(--space);
+}
+
+/* Encabezado asimétrico: rompe la monotonía del centrado */
+.practice-head {
+    display: grid;
+    grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr);
+    gap: clamp(28px, 4vw, 64px);
+    align-items: start;
+    margin-bottom: clamp(48px, 6vw, 76px);
+}
+
+.practice-head .h2 {
+    position: relative;
+    margin: 16px 0 0;
+    padding-bottom: 22px;
+}
+
+.practice-head .h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 44px;
+    height: 2px;
+    background: var(--gold-400);
+}
+
+.practice-intro {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: clamp(15.5px, 1.5vw, 16.5px);
+    line-height: 1.8;
+    max-width: 60ch;
+}
+
+@media (max-width: 900px) {
+    .practice-head { grid-template-columns: 1fr; }
+}
+
+/* Rótulo de entrada al índice */
+.practice-kicker {
+    margin: 0 0 18px;
+    font: 600 11px/1.2 "Montserrat", sans-serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* 6 áreas: 3×2 cierra la retícula sin filas incompletas */
+.practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+}
+
+.practice-card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px 34px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background-color var(--t) var(--ease);
+}
+
+.practice-card:hover { background: var(--bg-alt); }
+
+/* El ordinal sustituye al icono: más sobrio y da estructura de sumario */
+.practice-num {
+    font: 600 12px/1 "Montserrat", sans-serif;
+    letter-spacing: .1em;
+    color: var(--navy-300);
+    transition: color var(--t) var(--ease);
+}
+
+.practice-card:hover .practice-num { color: var(--gold-500); }
+
+[data-theme="dark"] .practice-num { color: var(--navy-400); }
+[data-theme="dark"] .practice-card:hover .practice-num { color: var(--gold-300); }
+
+.practice-name {
+    margin: 16px 0 10px;
+    font: 600 16px/1.4 "Montserrat", sans-serif;
+    color: var(--ink);
+}
+
+.practice-desc {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.74;
+}
+
+/* Nota de cierre: filete dorado al margen, sin relleno */
+.practice-note {
+    margin: clamp(48px, 6vw, 76px) auto 0;
+    max-width: 76ch;
+    padding-left: clamp(20px, 2.5vw, 30px);
+    border-left: 2px solid var(--gold-400);
+}
+
+.practice-note p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.82;
+}
+
+@media (max-width: 1000px) {
+    .practice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+    .practice-grid { grid-template-columns: 1fr; }
+    .practice-card { padding: 26px 22px 28px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT
+   ═══════════════════════════════════════════════════════════════ */
+.about {
+    background: var(--bg);
+    color: var(--ink);
+    padding: clamp(64px, 8vw, 120px) var(--space);
+}
+
+.about .container {
+    max-width: var(--container);
+    margin-inline: auto;
+}
+
+.about .grid { display: grid; gap: clamp(28px, 4vw, 56px); }
+
+.about-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.about .lead {
+    color: var(--ink-soft);
+    max-width: 62ch;
+}
+
+.about .muted { color: var(--muted); }
+
+.about .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+@media (max-width: 980px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-media { order: -1; }
+}
+
+.about-media { position: relative; }
+
+.frame {
+    position: relative;
+    width: min(560px, 100%);
+    margin-left: auto;
+    aspect-ratio: 4/3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--gray-200);
+}
+
+.frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Acercamiento largo y de amplitud mínima: se nota al mirar, no al pasar */
+    transition: transform .7s var(--ease);
+}
+
+.frame:hover img { transform: scale(1.02); }
+
+/* ── Vídeo institucional ──────────────────────────────────────── */
+/* El material es 16:9; recortarlo a 4:3 se comería un cuarto del encuadre. */
+.frame--video {
+    aspect-ratio: 16/9;
+    margin: 0;                 /* <figure> trae margen del agente de usuario */
+    background: var(--navy-900);
+}
+
+.about-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .7s var(--ease);
+}
+
+.frame--video:hover .about-video { transform: scale(1.02); }
+
+/* Mandos discretos: atenuados en reposo, nunca ocultos.
+   Un vídeo que arranca solo necesita pausa siempre alcanzable (WCAG 2.2.2),
+   y en pantalla táctil no existe el :hover que podría revelarla. */
+.video-controls {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    gap: 8px;
+    opacity: .78;
+    transition: opacity var(--t) var(--ease);
+}
+
+.frame--video:hover .video-controls,
+.frame--video:focus-within .video-controls,
+.frame--video.is-paused .video-controls { opacity: 1; }
+
+.video-btn {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, .45);
+    border-radius: var(--radius-sm);
+    background: rgba(26, 35, 56, .55);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color var(--t) var(--ease), color var(--t) var(--ease),
+                border-color var(--t) var(--ease);
+}
+
+.video-btn:hover {
+    background: #fff;
+    border-color: #fff;
+    color: var(--navy-800);
+}
+
+/* El anillo general se pierde sobre el vídeo: sobre imagen manda el blanco */
+.video-btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.video-btn svg { width: 15px; height: 15px; }
+
+/* Cada botón muestra el icono del estado contrario al actual */
+.frame--video .icon-play,
+.frame--video .icon-sound-on { display: none; }
+
+.frame--video.is-paused .icon-pause { display: none; }
+.frame--video.is-paused .icon-play  { display: block; }
+
+.frame--video.is-unmuted .icon-sound-off { display: none; }
+.frame--video.is-unmuted .icon-sound-on  { display: block; }
+
+.overlay {
+    position: absolute;
+    left: -8%;
+    bottom: -8%;
+    width: 46%;
+    aspect-ratio: 4/3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 4px solid var(--bg);
+    background: var(--bg-alt);
+}
+
+@media (max-width: 980px) {
+    .overlay { left: auto; right: 6%; bottom: -10%; width: 50%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EQUIPO — fichas separadas por filete horizontal
+   ═══════════════════════════════════════════════════════════════ */
+.team {
+    background: var(--bg);
+    color: var(--ink);
+    padding: clamp(64px, 8vw, 120px) var(--space);
+}
+
+.intro {
+    display: grid;
+    gap: 14px;
+    max-width: 720px;
+    margin: 0 auto clamp(48px, 6vw, 80px);
+    text-align: center;
+}
+
+.intro .lead { margin-inline: auto; }
+
+/* ── Fichas de socio ──────────────────────────────────────────
+   Retrato fijo a la izquierda en las cuatro fichas. El zigzag
+   alterno lee como parrilla comercial; la repetición constante,
+   como un directorio profesional.
+   ───────────────────────────────────────────────────────────── */
+.socios {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+}
+
+.socio {
+    display: grid;
+    grid-template-columns: clamp(190px, 22vw, 260px) minmax(0, 1fr);
+    gap: clamp(28px, 4vw, 60px);
+    align-items: start;
+    padding: clamp(40px, 5vw, 64px) 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+/* Fichas pares: retrato a la derecha.
+   El orden del DOM no cambia (retrato → ficha); solo se reasignan las
+   columnas, así el lector de pantalla y el apilado móvil siguen leyendo
+   en el mismo orden en las cuatro. */
+.socio:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr) clamp(190px, 22vw, 260px);
+}
+
+.socio:nth-child(even) .socio-retrato {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.socio:nth-child(even) .socio-ficha {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+@media (max-width: 760px) {
+    .socio,
+    .socio:nth-child(even) {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    /* Al apilar hay una sola columna: se anula la reasignación */
+    .socio:nth-child(even) .socio-retrato,
+    .socio:nth-child(even) .socio-ficha {
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
+
+/* Retrato vertical 4:5: proporción de ficha, no de fotografía de prensa */
+.socio-retrato {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--gray-200);
+}
+
+@media (max-width: 760px) {
+    .socio-retrato {
+        width: min(240px, 62%);
+        aspect-ratio: 4/5;
+    }
+}
+
+.socio-retrato img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .7s var(--ease);
+}
+
+.socio-retrato:hover img { transform: scale(1.02); }
+
+/* Encuadre vertical por persona */
+.socio-retrato.encuadre-high img   { object-position: 50% 18%; }
+.socio-retrato.encuadre-up img     { object-position: 50% 32%; }
+.socio-retrato.encuadre-center img { object-position: 50% 50%; }
+
+.socio-ficha {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ordinal: misma familia visual que el índice de áreas de práctica */
+.socio-num {
+    font: 600 12px/1 "Montserrat", sans-serif;
+    letter-spacing: .1em;
+    color: var(--navy-300);
+}
+
+[data-theme="dark"] .socio-num { color: var(--navy-400); }
+
+.socio-nombre {
+    margin: 14px 0 0;
+    font: 600 clamp(1.24rem, 2.1vw, 1.45rem)/1.28 "Montserrat", sans-serif;
+    letter-spacing: -.008em;
+    color: var(--ink);
+}
+
+.socio-cargo {
+    position: relative;
+    margin: 10px 0 0;
+    padding-bottom: 20px;
+    font: 600 11px/1.2 "Montserrat", sans-serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.socio-cargo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 36px;
+    height: 2px;
+    background: var(--gold-400);
+}
+
+.socio-bio {
+    margin-top: 22px;
+    max-width: 68ch;
+}
+
+.socio-bio p {
+    margin: 0 0 1rem;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.82;
+}
+
+.socio-bio p:last-child { margin-bottom: 0; }
+
+.socio-email {
+    position: relative;
+    align-self: flex-start;
+    margin-top: 24px;
+    font: 500 13px/1.2 "Montserrat", sans-serif;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color var(--t) var(--ease);
+}
+
+.socio-email::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1px;
+    background: var(--gold-400);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform var(--t) var(--ease);
+}
+
+.socio-email:hover { color: var(--navy-600); }
+.socio-email:hover::after { transform: scaleX(1); }
+
+[data-theme="dark"] .socio-email:hover { color: var(--gold-300); }
+
+.cta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: clamp(48px, 6vw, 72px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════ */
+.footer {
+    background: var(--footer-bg) !important;
+    color: var(--footer-ink);
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    transition: background-color var(--t-slow) var(--ease);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BACK TO TOP — discreto
+   ═══════════════════════════════════════════════════════════════ */
+.back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1035;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--ink-soft);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity var(--t) var(--ease), visibility var(--t) var(--ease),
+                transform var(--t) var(--ease), color var(--t) var(--ease),
+                border-color var(--t) var(--ease);
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    color: var(--navy-600);
+    border-color: var(--navy-400);
+}
+
+.back-to-top svg {
+    width: 17px;
+    height: 17px;
+    transition: transform var(--t) var(--ease);
+}
+
+/* La flecha se adelanta 2px hacia arriba: confirma el destino */
+.back-to-top:hover svg { transform: translateY(-2px); }
+
+[data-theme="dark"] .back-to-top:hover { color: var(--gold-300); }
+
+/* ═══════════════════════════════════════════════════════════════
+   PROGRESS / 404
+   ═══════════════════════════════════════════════════════════════ */
+.ctn-404 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* ── Página 404 ───────────────────────────────────────────────────
+   Mismo encabezado asimétrico de las áreas de práctica y el mismo
+   índice sobre filetes: el error no estrena lenguaje propio. */
+.nf {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: clamp(56px, 7vw, 100px) var(--space) clamp(64px, 8vw, 120px);
+}
+
+.nf-head {
+    display: grid;
+    grid-template-columns: minmax(0, .46fr) minmax(0, 1fr);
+    gap: clamp(20px, 4vw, 56px);
+    align-items: center;
+    padding-bottom: clamp(40px, 5vw, 64px);
+    border-bottom: 1px solid var(--rule);
+}
+
+/* Cifra grande y muy callada: aporta escala sin levantar la voz.
+   Va en `--rule`, el gris de los filetes, así que se atenúa por igual
+   en tema claro y en oscuro sin necesitar una regla aparte. */
+.nf-mark {
+    margin: 0;
+    font: 600 clamp(4.5rem, 12vw, 9.5rem)/.82 "Montserrat", sans-serif;
+    letter-spacing: -.03em;
+    color: var(--rule);
+    user-select: none;
+}
+
+.nf-copy .h1 { margin-top: 14px; }
+
+.nf-kicker {
+    margin: clamp(40px, 5vw, 64px) 0 18px;
+    font: 600 11px/1.2 "Montserrat", sans-serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.nf-index { border-top: 1px solid var(--rule); }
+
+.nf-fila {
+    display: grid;
+    grid-template-columns: auto minmax(0, 14rem) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(14px, 2.5vw, 32px);
+    padding: 22px 6px;
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    transition: background-color var(--t) var(--ease);
+}
+
+.nf-fila:hover { background: var(--bg-alt); }
+
+.nf-num {
+    font: 600 12px/1 "Montserrat", sans-serif;
+    letter-spacing: .1em;
+    color: var(--navy-300);
+    transition: color var(--t) var(--ease);
+}
+
+.nf-nombre {
+    font: 600 clamp(15px, 1.5vw, 17px)/1.3 "Montserrat", sans-serif;
+    color: var(--ink);
+}
+
+.nf-desc {
+    font: 400 13.5px/1.55 "Montserrat", sans-serif;
+    color: var(--ink-soft);
+}
+
+.nf-chev {
+    width: 16px;
+    height: 16px;
+    color: var(--navy-400);
+    transition: transform var(--t) var(--ease), color var(--t) var(--ease);
+}
+
+.nf-fila:hover .nf-num  { color: var(--gold-500); }
+.nf-fila:hover .nf-chev { color: var(--navy-600); transform: translateX(3px); }
+
+[data-theme="dark"] .nf-num { color: var(--navy-400); }
+[data-theme="dark"] .nf-fila:hover .nf-num  { color: var(--gold-300); }
+[data-theme="dark"] .nf-fila:hover .nf-chev { color: var(--gold-300); }
+
+@media (max-width: 760px) {
+    .nf-head {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    /* La descripción baja bajo el nombre; el galón se queda a la derecha */
+    .nf-fila {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 4px 16px;
+    }
+
+    .nf-num    { grid-column: 1; grid-row: 1; }
+    .nf-nombre { grid-column: 2; grid-row: 1; }
+    .nf-chev   { grid-column: 3; grid-row: 1; }
+    .nf-desc   { grid-column: 2; grid-row: 2; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   OFICINAS — carrusel
+   Desplazamiento con scroll-snap: el gesto táctil funciona nativo
+   y el JS solo empuja la posición. Sin librerías.
+   ═══════════════════════════════════════════════════════════════ */
+.oficinas {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--rule);
+    padding: clamp(64px, 8vw, 120px) var(--space);
+}
+
+.oficinas-inner {
+    max-width: var(--container);
+    margin-inline: auto;
+}
+
+.carrusel {
+    position: relative;
+}
+
+.carrusel-viewport {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    border-radius: var(--radius);
+    background: var(--gray-200);
+    /* La barra nativa estorba: la navegación son los controles */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carrusel-viewport::-webkit-scrollbar { display: none; }
+
+.carrusel-track {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.carrusel-slide {
+    position: relative;
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+}
+
+.carrusel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carrusel-pie {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px 16px;
+    background: var(--caption-bg);
+    border-radius: 0 var(--radius-sm) 0 0;
+    font: 600 11px/1.2 "Montserrat", sans-serif;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--caption-color);
+}
+
+/* Barra inferior: indicadores a la izquierda, controles a la derecha */
+.carrusel-barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.carrusel-indicadores {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Filetes, no puntos: mismo lenguaje que el resto del sitio */
+.carrusel-punto {
+    appearance: none;
+    padding: 0;
+    border: 0;
+    background: var(--gray-300);
+    width: 26px;
+    height: 2px;
+    cursor: pointer;
+    transition: width var(--t) var(--ease), background-color var(--t) var(--ease);
+}
+
+.carrusel-punto:hover { background: var(--navy-400); }
+
+.carrusel-punto[aria-selected='true'] {
+    width: 46px;
+    background: var(--gold-400);
+}
+
+.carrusel-punto:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 6px;
+}
+
+.carrusel-controles {
+    display: flex;
+    gap: 8px;
+}
+
+.carrusel-btn {
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+.carrusel-btn:hover {
+    color: var(--navy-600);
+    border-color: var(--navy-400);
+}
+
+[data-theme="dark"] .carrusel-btn:hover { color: var(--gold-300); }
+
+.carrusel-btn svg { width: 18px; height: 18px; }
+
+@media (max-width: 620px) {
+    .carrusel-slide { aspect-ratio: 4/3; }
+
+    .carrusel-barra {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .carrusel-controles { justify-content: flex-end; }
+    .carrusel-indicadores { justify-content: center; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        padding: 10px 0 6px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, .09);
+    }
+
+    .nav-link { margin: 0; padding: 11px 0 !important; }
+
+    .nav-link::after { left: 0; right: 0; bottom: 6px; }
+}
+
+@media (max-width: 980px) {
+    .ctn-404 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-404 { list-style: none; padding-left: 0; }
+
+    .navbar-brand p { display: none; }
+}
+
+@media (max-width: 768px) {
+    html { scroll-padding-top: 84px; }
+
+    .hero-header {
+        height: auto;
+        min-height: 74vh;
+        padding: 5rem var(--space);
+    }
+
+    .hero-header h1::after { margin: 20px auto 18px; }
+
+    .btnIndexInfo { padding: 13px 26px; font-size: 13px; }
+
+}
+
+@media (max-width: 480px) {
+    .hero-header { min-height: 66vh; padding: 4rem var(--space); }
+
+    /* El tracking amplio hace que el lema salte de línea en pantallas
+       estrechas: se recorta sin perder el carácter. */
+    .hero-tagline { --track: .24em; }
+
+    .ctas,
+    .cta-strip {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ctas .custom-btn,
+    .cta-strip .custom-btn { justify-content: center; }
+
+    .back-to-top { right: 16px; bottom: 16px; width: 38px; height: 38px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCESIBILIDAD
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        /* Sin esto, la entrada escalonada del hero deja el lema y el botón
+           invisibles hasta 0,8 s aunque la animación dure un instante. */
+        animation-delay: 0s !important;
+        transition-duration: .01ms !important;
+    }
+
+    .anim-hidden,
+    .anim-stagger > * { opacity: 1 !important; }
+
+    .hero-header h1,
+    .hero-tagline,
+    .hero-header .btnIndexInfo { opacity: 1 !important; }
+
+    .hero-header h1::after { transform: scaleX(1) !important; }
+
+    /* Sin transición, un zoom instantáneo sería un salto: se suprime */
+    .frame:hover img,
+    .frame--video:hover .about-video,
+    .hero-media .collage-pieza:hover img,
+    .socio-retrato:hover img,
+    .custom-btn:hover,
+    .btnIndexInfo:hover,
+    .back-to-top:hover svg,
+    .custom-btn:hover .chev { transform: none !important; }
+}
