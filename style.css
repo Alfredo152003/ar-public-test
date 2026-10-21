@@ -384,7 +384,7 @@ button:focus-visible,
     min-height: 480px;
     background-image:
         linear-gradient(rgba(26, 35, 56, .84), rgba(26, 35, 56, .84)),
-        url("/images/hero-img-2.jpg");
+        url("images/hero-img-2.jpg");
     background-size: cover;
     background-position: center;
     color: #fff;
