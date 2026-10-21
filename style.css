@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* La tipografía se carga desde el <head> del Layout, no con @import.
+   Un @import dentro de la hoja obliga al navegador a descargarla y parsearla
+   entera antes de descubrir la fuente, y no admite preconexión: era una
+   cascada de dos saltos en la ruta crítica del primer pintado. */
 
 /* ═══════════════════════════════════════════════════════════════
    ARIAS RANK & ASOCIADOS
@@ -319,15 +322,54 @@ button:focus-visible,
 
 .theme-toggle svg { width: 17px; height: 17px; }
 
+/* ── Conmutador de idioma ──────────────────────────────────────────
+   Dos letras, no una bandera: una bandera es un país y no un idioma.
+   Mismo cuerpo que el conmutador de tema para que la pareja de la
+   derecha del navbar lea como una sola unidad. */
+.navbar-utiles {
+    display: inline-flex;
+    align-items: center;
+}
+
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 9px;
+    margin-left: 14px;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: var(--radius-sm);
+    color: rgba(255, 255, 255, .74);
+    text-decoration: none;
+    /* Cifras y versales tabulares: ES y EN deben ocupar lo mismo para que
+       el navbar no se mueva al cambiar de idioma. */
+    font: 600 12px/1 "Montserrat", sans-serif;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .12em;
+    flex-shrink: 0;
+    transition: color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+    color: #fff;
+    border-color: rgba(255, 255, 255, .45);
+}
+
+@media (max-width: 991px) {
+    /* En el menú desplegado, los dos útiles comparten fila a la izquierda */
+    .navbar-utiles { margin: 12px 0 6px; }
+    .lang-toggle { margin-left: 0; margin-right: 10px; }
+    .theme-toggle { margin: 0; }
+}
+
 .theme-toggle .icon-moon { display: none; }
 .theme-toggle .icon-sun  { display: block; }
 
 [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 [data-theme="dark"] .theme-toggle .icon-sun  { display: none; }
-
-@media (max-width: 991px) {
-    .theme-toggle { margin: 12px 0 6px; }
-}
 
 /* ═══════════════════════════════════════════════════════════════
    HERO — velo navy sólido, sin texturas ni viñetas
@@ -342,7 +384,7 @@ button:focus-visible,
     min-height: 480px;
     background-image:
         linear-gradient(rgba(26, 35, 56, .84), rgba(26, 35, 56, .84)),
-        url("images/hero-img-2.jpg");
+        url("/images/hero-img-2.jpg");
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -744,16 +786,18 @@ button:focus-visible,
     align-items: center;
 }
 
-/* ── Lámina de tres fotografías ────────────────────────────────────
-   Una lámina editorial, no tres tarjetas sueltas: encabeza una toma
-   ancha y debajo la acompañan dos. Los tres originales son 4:3
-   apaisados, así que ningún encuadre se lleva a vertical — recortar
-   a retrato partiría las figuras por la mitad. */
+/* ── Lámina de cuatro fotografías ──────────────────────────────────
+   Una lámina editorial, no cuatro tarjetas sueltas: encabeza una toma
+   ancha y debajo la acompañan tres. La jerarquía la marca la relación
+   entre la toma ancha y la fila, no un reparto desigual dentro de la
+   fila: un 2×2 plano leería como parrilla de tarjetas.
+   Los cuatro originales son 4:3 apaisados, así que ningún encuadre se
+   lleva a vertical — recortar a retrato partiría las figuras por la
+   mitad. */
 .hero-collage {
     display: grid;
-    /* Reparto desigual a propósito: el 50/50 lee como plantilla */
-    grid-template-columns: 1.15fr .85fr;
-    /* Juntura fina: las tres piezas deben leerse como una sola pieza */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Juntura fina: las cuatro piezas deben leerse como una sola pieza */
     gap: 6px;
 }
 
@@ -770,9 +814,10 @@ button:focus-visible,
     aspect-ratio: 16/10;
 }
 
-/* La segunda pieza fija la altura de la fila y la tercera la acompaña:
-   así el borde inferior queda a ras sin cuadrar alturas a mano. */
-.hero-media .collage-pieza:nth-child(2) { aspect-ratio: 4/3; }
+/* Las tres de apoyo en cuadrado: mismo recorte para las tres y una
+   fila de altura previsible bajo la toma ancha. Desde 4:3 se pierde un
+   cuarto del ancho, que es el mismo recorte que ya tenía la tercera. */
+.hero-media .collage-pieza:not(.collage-lead) { aspect-ratio: 1; }
 
 .hero-media .collage-pieza img {
     width: 100%;
@@ -789,6 +834,17 @@ button:focus-visible,
 @media (max-width: 980px) {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-media { order: -1; }
+}
+
+/* Por debajo de 620 px, tres piezas en fila quedarían en miniaturas de
+   unos 100 px: se pasa a dos columnas y la cuarta cruza a lo ancho. */
+@media (max-width: 620px) {
+    .hero-collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .hero-media .collage-pieza:nth-child(4) {
+        grid-column: 1 / -1;
+        aspect-ratio: 16/10;
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1551,7 +1607,57 @@ button:focus-visible,
 
 .carrusel-controles {
     display: flex;
+    align-items: center;
     gap: 8px;
+}
+
+/* ── Cuenta atrás hasta la siguiente fotografía ────────────────────
+   Mismo vocabulario que los indicadores: un filete que merma, no un
+   anillo que gira. La altura iguala a los botones para que la barra
+   mantenga una sola línea de base. */
+.carrusel-reloj {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 40px;
+    margin-right: 4px;
+    padding-right: 14px;
+    border-right: 1px solid var(--rule);
+}
+
+/* Cifras tabulares: sin ellas el numeral cambia de ancho al pasar de
+   9 a 8 y la barra entera se mueve un píxel cada segundo. */
+.carrusel-seg {
+    font: 600 11px/1 "Montserrat", sans-serif;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .1em;
+    color: var(--muted);
+    transition: color var(--t) var(--ease);
+}
+
+/* En reposo la cifra está apagada; mientras corre toma el acento */
+.carrusel-corriendo .carrusel-seg { color: var(--navy-600); }
+
+[data-theme="dark"] .carrusel-corriendo .carrusel-seg { color: var(--gold-300); }
+
+.carrusel-pista {
+    display: block;
+    width: 46px;          /* el ancho del indicador activo: rima con él */
+    height: 2px;
+    background: var(--gray-300);
+}
+
+.carrusel-merma {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--gold-400);
+    /* La escala la escribe el guion en cada fotograma, desde el mismo
+       reloj que mueve la cifra: nunca pueden discrepar. */
+    transform: scaleX(1);
+    transform-origin: left center;
 }
 
 .carrusel-btn {
@@ -1672,6 +1778,9 @@ button:focus-visible,
     .anim-hidden,
     .anim-stagger > * { opacity: 1 !important; }
 
+    /* Sin autoavance no hay nada que contar: el reloj sobra */
+    .carrusel-reloj { display: none; }
+
     .hero-header h1,
     .hero-tagline,
     .hero-header .btnIndexInfo { opacity: 1 !important; }
@@ -1688,3 +1797,42 @@ button:focus-visible,
     .back-to-top:hover svg,
     .custom-btn:hover .chev { transform: none !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   TEXTO JUSTIFICADO — requisito del cliente
+
+   Todo el texto corrido del sitio se alinea a ambos márgenes.
+   El bloque va al final del fichero a propósito: así gana a la
+   alineación heredada de los contenedores centrados sin tener que
+   recurrir a !important.
+
+   `hyphens: auto` no es un adorno, es lo que hace viable el
+   justificado: el español tiene palabras largas y varias columnas
+   del sitio son estrechas (las fichas de áreas de práctica rondan
+   los 250 px). Sin partición de palabras, justificar abre "ríos"
+   de blanco entre palabras. Funciona porque <html lang="es"> ya
+   declara el idioma, que es lo que el navegador necesita para
+   aplicar su diccionario de partición.
+   ═══════════════════════════════════════════════════════════════ */
+.sub,
+.lead,
+.trust,
+.bullets li,
+.practice-intro,
+.practice-desc,
+.practice-note p,
+.socio-bio p,
+.ctn-404 p,
+.nf-desc {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    /* Reparte mejor las últimas líneas donde esté soportado; el
+       resto de navegadores lo ignoran sin consecuencias. */
+    text-wrap: pretty;
+}
+
+/* Los bloques de entrada de /team y /contact-us son composiciones
+   centradas. Al justificarlos, la última línea quedaría pegada a la
+   izquierda bajo un titular centrado; recentrarla mantiene el eje. */
+.intro .lead { text-align-last: center; }

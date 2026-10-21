@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# En construcción: devuelve 404 en el servidor y va marcada noindex
+Disallow: /progress
+Disallow: /en/progress
+
+# Backend de WordPress: no hay nada que indexar
+Disallow: /wp/
+
+Sitemap: https://www.ariasranklaw.com.sv/sitemap.xml

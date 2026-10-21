@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/about/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/about/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/about/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/practice-areas/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/practice-areas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/practice-areas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/practice-areas/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/en/practice-areas/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/practice-areas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/practice-areas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/practice-areas/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/team/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/team/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/team/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/en/team/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/team/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/team/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/contact-us/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/contact-us/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/contact-us/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/contact-us/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ariasranklaw.com.sv/en/contact-us/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ariasranklaw.com.sv/contact-us/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ariasranklaw.com.sv/en/contact-us/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ariasranklaw.com.sv/contact-us/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
