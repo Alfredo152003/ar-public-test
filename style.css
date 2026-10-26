@@ -384,7 +384,7 @@ button:focus-visible,
     min-height: 480px;
     background-image:
         linear-gradient(rgba(26, 35, 56, .84), rgba(26, 35, 56, .84)),
-        url("images/hero-img-2.jpg");
+        url("/arias-rank-web/images/hero-img-2.jpg");
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -781,23 +781,26 @@ button:focus-visible,
     padding: clamp(64px, 8vw, 120px) var(--space);
 }
 
+/* Recibe el foco al pulsar «Descubre más» sólo para que el siguiente Tab
+   parta de aquí; no es un control y no debe pintar contorno. */
+.hero-services:focus { outline: none; }
+
 .hero-grid {
     grid-template-columns: 1.06fr .94fr;
     align-items: center;
 }
 
-/* ── Lámina de cuatro fotografías ──────────────────────────────────
-   Una lámina editorial, no cuatro tarjetas sueltas: encabeza una toma
-   ancha y debajo la acompañan tres. La jerarquía la marca la relación
+/* ── Lámina de tres fotografías ────────────────────────────────────
+   Una lámina editorial, no tres tarjetas sueltas: encabeza una toma
+   ancha y debajo la acompañan dos. La jerarquía la marca la relación
    entre la toma ancha y la fila, no un reparto desigual dentro de la
-   fila: un 2×2 plano leería como parrilla de tarjetas.
-   Los cuatro originales son 4:3 apaisados, así que ningún encuadre se
-   lleva a vertical — recortar a retrato partiría las figuras por la
-   mitad. */
+   fila.
+   Los originales son 4:3 apaisados, así que ningún encuadre se lleva a
+   vertical — recortar a retrato partiría las figuras por la mitad. */
 .hero-collage {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    /* Juntura fina: las cuatro piezas deben leerse como una sola pieza */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Juntura fina: las tres piezas deben leerse como una sola pieza */
     gap: 6px;
 }
 
@@ -814,10 +817,10 @@ button:focus-visible,
     aspect-ratio: 16/10;
 }
 
-/* Las tres de apoyo en cuadrado: mismo recorte para las tres y una
-   fila de altura previsible bajo la toma ancha. Desde 4:3 se pierde un
-   cuarto del ancho, que es el mismo recorte que ya tenía la tercera. */
-.hero-media .collage-pieza:not(.collage-lead) { aspect-ratio: 1; }
+/* Las dos de apoyo en su 4:3 original: a media anchura un cuadrado
+   haría la fila más alta que la toma ancha y le quitaría el protagonismo,
+   y así no se recorta nada. */
+.hero-media .collage-pieza:not(.collage-lead) { aspect-ratio: 4/3; }
 
 .hero-media .collage-pieza img {
     width: 100%;
@@ -834,17 +837,6 @@ button:focus-visible,
 @media (max-width: 980px) {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-media { order: -1; }
-}
-
-/* Por debajo de 620 px, tres piezas en fila quedarían en miniaturas de
-   unos 100 px: se pasa a dos columnas y la cuarta cruza a lo ancho. */
-@media (max-width: 620px) {
-    .hero-collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-    .hero-media .collage-pieza:nth-child(4) {
-        grid-column: 1 / -1;
-        aspect-ratio: 16/10;
-    }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -972,6 +964,198 @@ button:focus-visible,
 @media (max-width: 620px) {
     .practice-grid { grid-template-columns: 1fr; }
     .practice-card { padding: 26px 22px 28px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CLIENTES (portada)
+   Retícula de filetes, como las áreas de práctica, con dos giros:
+   el encabezado vive dentro de la retícula —ocupa dos celdas— y cada
+   sector lleva un icono de línea en lugar de ordinal.
+   Con cuatro columnas, 2 + 14 cierra cuatro filas exactas; con tres,
+   1 + 14 cierra cinco; con dos, 2 + 14 cierra ocho.
+   ═══════════════════════════════════════════════════════════════ */
+.clientes {
+    background: var(--bg);
+    border-top: 1px solid var(--rule);
+    padding: clamp(64px, 8vw, 120px) var(--space);
+}
+
+.clientes-inner {
+    max-width: var(--container);
+    margin-inline: auto;
+}
+
+.clientes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+}
+
+/* Los sectores son celdas de la retícula del padre */
+.clientes-lista {
+    display: contents;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.clientes-cabeza,
+.clientes-celda {
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+}
+
+/* ── Encabezado ─────────────────────────────────────────────────── */
+.clientes-cabeza {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 34px 32px 28px;
+}
+
+.clientes-cabeza .h2 {
+    position: relative;
+    margin: 16px 0 0;
+    padding-bottom: 22px;
+}
+
+.clientes-cabeza .h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 44px;
+    height: 2px;
+    background: var(--gold-400);
+}
+
+/* Cifra grande y callada, la misma voz que la del 404: aporta escala
+   sin levantar la voz. `--rule` la atenúa igual en claro y en oscuro. */
+.clientes-cifra {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 14px;
+    margin: 0;
+    user-select: none;
+}
+
+.clientes-num {
+    font: 600 clamp(3.4rem, 6.4vw, 5.4rem)/.8 "Montserrat", sans-serif;
+    letter-spacing: -.03em;
+    color: var(--rule);
+}
+
+.clientes-cifra-pie {
+    font: 600 11px/1.2 "Montserrat", sans-serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* ── Sectores ───────────────────────────────────────────────────── */
+.clientes-celda {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+    min-height: 148px;
+    padding: 28px 26px 26px;
+    transition: background-color var(--t) var(--ease);
+}
+
+/* Filete dorado sobre la celda: aparece por fundido, no por barrido.
+   Pisa el filete gris de arriba para que se lea como subrayado. */
+.clientes-celda::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: 0;
+    height: 2px;
+    background: var(--gold-400);
+    opacity: 0;
+    transition: opacity var(--t) var(--ease);
+}
+
+.clientes-icono {
+    width: 26px;
+    height: 26px;
+    color: var(--navy-400);
+    transition: color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.clientes-nombre {
+    font: 600 15px/1.42 "Montserrat", sans-serif;
+    color: var(--ink);
+    transition: color var(--t) var(--ease);
+}
+
+.clientes-celda:hover { background: var(--bg-alt); }
+.clientes-celda:hover::before { opacity: 1; }
+
+/* El icono sube 2 px y se dora: tacto, no movimiento */
+.clientes-celda:hover .clientes-icono {
+    color: var(--gold-500);
+    transform: translateY(-2px);
+}
+
+/* Al señalar un sector, los demás se repliegan un tono: la mirada va
+   a la celda activa sin que nada se mueva. */
+.clientes-grid:has(.clientes-celda:hover) .clientes-celda:not(:hover) .clientes-nombre {
+    color: var(--ink-soft);
+}
+
+[data-theme="dark"] .clientes-icono { color: var(--navy-300); }
+[data-theme="dark"] .clientes-celda:hover .clientes-icono { color: var(--gold-300); }
+
+/* ── Entrada ────────────────────────────────────────────────────────
+   Las celdas no son hijas directas de `.anim-stagger` (la lista va con
+   `display: contents`) y además son quince, y la cascada genérica se
+   queda en ocho. Se anula la genérica y se escalona con `--i`. */
+.clientes-grid.anim-stagger > * { opacity: 1; }
+
+.clientes-cabeza,
+.clientes-celda { opacity: 0; }
+
+.clientes-grid.anim-active .clientes-cabeza,
+.clientes-grid.anim-active .clientes-celda {
+    animation: arFadeUp .55s var(--ease) forwards;
+    animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .clientes-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .clientes-cabeza { grid-column: span 1; padding: 30px 26px 26px; }
+}
+
+@media (max-width: 760px) {
+    .clientes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .clientes-cabeza { grid-column: span 2; }
+    .clientes-celda { min-height: 132px; padding: 24px 20px 22px; }
+}
+
+/* En una columna, icono y nombre en fila: catorce celdas altas serían
+   un recorrido demasiado largo para una lista de nombres. */
+@media (max-width: 520px) {
+    .clientes-grid { grid-template-columns: 1fr; }
+    .clientes-cabeza { grid-column: auto; padding: 28px 22px 24px; }
+
+    .clientes-celda {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 18px;
+        min-height: 0;
+        padding: 18px 22px;
+    }
+
+    .clientes-icono { flex: 0 0 22px; width: 22px; height: 22px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1237,17 +1421,8 @@ button:focus-visible,
     flex-direction: column;
 }
 
-/* Ordinal: misma familia visual que el índice de áreas de práctica */
-.socio-num {
-    font: 600 12px/1 "Montserrat", sans-serif;
-    letter-spacing: .1em;
-    color: var(--navy-300);
-}
-
-[data-theme="dark"] .socio-num { color: var(--navy-400); }
-
 .socio-nombre {
-    margin: 14px 0 0;
+    margin: 0;
     font: 600 clamp(1.24rem, 2.1vw, 1.45rem)/1.28 "Montserrat", sans-serif;
     letter-spacing: -.008em;
     color: var(--ink);
@@ -1776,7 +1951,9 @@ button:focus-visible,
     }
 
     .anim-hidden,
-    .anim-stagger > * { opacity: 1 !important; }
+    .anim-stagger > *,
+    .clientes-cabeza,
+    .clientes-celda { opacity: 1 !important; }
 
     /* Sin autoavance no hay nada que contar: el reloj sobra */
     .carrusel-reloj { display: none; }
@@ -1792,6 +1969,7 @@ button:focus-visible,
     .frame--video:hover .about-video,
     .hero-media .collage-pieza:hover img,
     .socio-retrato:hover img,
+    .clientes-celda:hover .clientes-icono,
     .custom-btn:hover,
     .btnIndexInfo:hover,
     .back-to-top:hover svg,
